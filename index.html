@@ -1,0 +1,38 @@
+<html>
+	<head>
+		<title>Web Speech</title>
+		<style type="text/css">
+		    #results {
+		    	min-height: 200px;
+		    	min-width: 200px;
+		    	border: solid 1px black;
+		    }
+		    #indicator {
+		    	background-color: black;
+		    	border-radius: 3px;
+		    }
+		    .not-listening {
+		    	color: gray;
+		    }
+		    .listening {
+		    	color: red;
+		    }
+		</style>
+	</head>
+	<body>
+		<div class="wrapper">
+			<header>
+				<h1>Web Speech Test</h1>
+				<h3><a href="http://jeshua.co">Jeshua Maxey</a></h3>
+			</header>
+			<section class="app">
+				<button id="start" class="start">Start</button>
+				<button id="stop" class="stop">Stop</button>
+				<span id="indicator" class="not-listening">Not Listening</span>
+				<div id="results"></div>
+			</section><!-- .app -->
+		</div>
+		<script src="js/jquery.js" type="text/javascript"></script>
+		<script src="js/main.js" type="text/javascript"></script>
+	</body>
+</html>
