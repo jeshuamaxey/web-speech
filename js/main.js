@@ -22,6 +22,7 @@ function setupRecogniser() {
       var message = e.results[lastResultIdx][0].transcript;
       console.log(e);
       if(e.results[lastResultIdx].isFinal) {
+        hidePrompt(); //will only be effectual first time round
         $('#results').append(message);
       }
     }
@@ -34,6 +35,7 @@ function setupRecogniser() {
 
 function startRecogniser() {
   ws.recognizer.start();
+  showPrompt();
   updateIndicator(true);
   console.log('recognizer started');
 }
@@ -54,6 +56,14 @@ function updateIndicator(running) {
     i.removeClass('listening');
     i.html('Not Listening');
   }
+}
+
+function showPrompt() {
+  $('#prompt').fadeIn();
+}
+
+function hidePrompt() {
+  $('#prompt').fadeOut();
 }
 
 function l(x) {

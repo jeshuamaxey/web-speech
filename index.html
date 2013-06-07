@@ -2,28 +2,72 @@
 	<head>
 		<title>Web Speech</title>
 		<style type="text/css">
-		    #results {
-		    	min-height: 200px;
-		    	min-width: 200px;
-		    	border: solid 1px black;
-		    }
-		    #indicator {
+			body {
+				font-family: "Courier New", Courier, monospace;
+			}
+			.prompt {
+				display: none;
+				float: right;
+				text-align: right;
+				color: red;
+				font-size: 150%;
+			}
+			.prompt-arrow {
+				position: relative;
+				right: 15px;
+				height: 70px;
+			}
+			header {
+				max-width: 60%;
+			}
+			.app {
+				max-width: 60%;
+			}
+			button {
+				padding: 4px;
+			}
+			#indicator {
 		    	background-color: black;
 		    	border-radius: 3px;
+		    	padding: 5px;
 		    }
 		    .not-listening {
 		    	color: gray;
 		    }
 		    .listening {
 		    	color: red;
+		    	-webkit-animation-duration: 1s;
+				-webkit-animation-name: pulse;
+				-webkit-animation-iteration-count: infinite;
+				-webkit-animation-direction: alternate;
 		    }
+		    #results {
+		    	min-height: 200px;
+		    	min-width: 200px;
+		    	margin-top: 10px;
+		    	border: solid 1px black;
+		    }
+		    @-webkit-keyframes pulse {
+			  from {
+			    background-color: gray;
+			  }
+			 
+			  to {
+			  	background-color: black;
+			  }
+			}
 		</style>
 	</head>
 	<body>
 		<div class="wrapper">
+			<div id="prompt" class="prompt">
+				<img src="img/up-arrow.svg" alt="">
+				<p>Click here to enable the app</p>
+			</div>
 			<header>
 				<h1>Web Speech Test</h1>
 				<h3><a href="http://jeshua.co">Jeshua Maxey</a></h3>
+				<p>This is a very rough and ready experiment with the Chrome web speech API. This will most certainly not work in any browser other than Google Chrome. Download Chrome <a href="https://www.google.com/intl/en/chrome/browser/index.html">here</a>.</p>
 			</header>
 			<section class="app">
 				<button id="start" class="start">Start</button>
