@@ -22,7 +22,7 @@ header {
 button {
 	padding: 4px;
 }
-#indicator {
+.indicator {
 	background-color: black;
 	border-radius: 3px;
 	padding: 5px;

@@ -1,18 +1,42 @@
-ws = {};
+ws = {
+  dictRunning: false,
+  interpretRunning: false
+};
 
 $(document).ready(setup);
 
 function setup() {
-  setupRecogniser();
-  $('#start').click(function() {
-    startRecogniser();
+  //dictation controls
+  $('#start-dict').click(function() {
+    setupDictation();
+    if(!ws.dictRunning) {
+      startDictation();
+    } else {
+      alert('Dictation is already turned on. Make sure to click allow in the upper right corner.');
+    }
   });
-  $('#stop').click(function() {
-    stopRecogniser();
+  $('#stop-dict').click(function() {
+    stopDictation();
+  });
+  //command interpretter controls
+  $('#start-interpret').click(function() {
+    setupInterpret();
+    if(!ws.dictRunning) {
+      startInterpret();
+    } else {
+      alert('Dictation is already turned on. Make sure to click allow in the upper right corner.');
+    }
+  });
+  $('#stop-interpret').click(function() {
+    stopInterpret();
   });
 }
 
-function setupRecogniser() {
+/*
+* DICTATION FUNCTIONS
+***************************/
+
+function setupDictation() {
   ws.recognizer = new webkitSpeechRecognition();
   ws.recognizer.continuous = true;
   ws.recognizer.interimResults = true;
@@ -29,24 +53,33 @@ function setupRecogniser() {
   };
   ws.recognizer.onend = function(e) {
     console.log('ended');
-    updateIndicator(false);
+    updateDictIndicator(false);
   };
 }
 
-function startRecogniser() {
+function startDictation() {
   ws.recognizer.start();
+  ws.dictRunning = true;
   showPrompt();
-  updateIndicator(true);
+  updateDictIndicator(ws.dictRunning);
   console.log('recognizer started');
 }
 
-function stopRecogniser() {
+function stopDictation() {
   ws.recognizer.stop();
-  updateIndicator(false);
+  ws.dictRunning = false;
+  updateDictIndicator(ws.dictRunning);
 }
 
-function updateIndicator(running) {
-  var i = $('#indicator');
+/*
+* INTERPRETTER FUNCTIONS
+***************************/
+
+/* All purpose functions */
+
+function updateDictIndicator(running) {
+  //make this general!
+  var i = $('#dict-indicator');
   if(running) {
     i.addClass('listening');
     i.removeClass('not-listening');

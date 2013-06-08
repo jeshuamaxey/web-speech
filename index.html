@@ -11,15 +11,32 @@
 			</div>
 			<header>
 				<h1>Web Speech Test</h1>
-				<h3><a href="http://jeshua.co">Jeshua Maxey</a></h3>
+				<h2><a href="http://jeshua.co">By Jeshua Maxey</a></h2>
 				<p>This is a very rough and ready experiment with the Chrome web speech API. This will most certainly not work in any browser other than Google Chrome. Download Chrome <a href="https://www.google.com/intl/en/chrome/browser/index.html">here</a>.</p>
 			</header>
-			<section class="app">
-				<button id="start" class="start">Start</button>
-				<button id="stop" class="stop">Stop</button>
-				<span id="indicator" class="not-listening">Not Listening</span>
+			<hr/>
+			<section class="app dictation">
+				<h3>Dictation</h3>
+				<p>Turn on dictation to speak text directly into the text area below</p>
+				<button id="start-dict" class="start">Start Dictaction</button>
+				<button id="stop-dict" class="stop">Stop Dictaction</button>
+				<span id="dict-indicator" class="not-listening indicator">Not Listening</span>
 				<div id="results"></div>
 			</section><!-- .app -->
+			<hr/>
+			<section class="app commands">
+				<h3>Commands</h3>
+				<p>Enable commands and then direct the web app to change its appearance with your voice.</p>
+				<button id="enable-commands">Enable Commands</button>
+				<button id="disable-commands">Disable Commands</button>
+				<span id="commands-indicator" class="indicator not-listening">Commands Disabled</span>
+				<ul class="command-list">
+					<li>Change background colour to...</li>
+					<li>Make text bigger</li>
+					<li>Make text smaller</li>
+					<li>Take me to somewhere.com</li>
+				</ul>
+			</section>
 		</div>
 		<script src="js/jquery.js" type="text/javascript"></script>
 		<script src="js/main.js" type="text/javascript"></script>
