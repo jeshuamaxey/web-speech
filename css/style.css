@@ -43,6 +43,12 @@ button {
 	margin-top: 10px;
 	border: solid 1px black;
 }
+
+.coming-soon {
+	color: gray;
+	text-decoration: line-through;
+}
+
 @-webkit-keyframes pulse {
   from {
     background-color: gray;

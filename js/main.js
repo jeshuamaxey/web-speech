@@ -1,6 +1,6 @@
 ws = {
   dictRunning: false,
-  interpretRunning: false
+  interpreterRunning: false
 };
 
 $(document).ready(setup);
@@ -18,17 +18,18 @@ function setup() {
   $('#stop-dict').click(function() {
     stopDictation();
   });
-  //command interpretter controls
-  $('#start-interpret').click(function() {
-    setupInterpret();
-    if(!ws.dictRunning) {
-      startInterpret();
+  //command interpreter controls
+  $('#start-commands').click(function() {
+    l('clik');
+    setupCmdListener();
+    if(!ws.interpretRunning) {
+      startCmdListener();
     } else {
-      alert('Dictation is already turned on. Make sure to click allow in the upper right corner.');
+      alert('Commands are already turned on. Make sure to click allow in the upper right corner.');
     }
   });
-  $('#stop-interpret').click(function() {
-    stopInterpret();
+  $('#stop-commands').click(function() {
+    stopCmdListener();
   });
 }
 
@@ -44,7 +45,6 @@ function setupDictation() {
     if (e.results.length) {
       var lastResultIdx = e.resultIndex;
       var message = e.results[lastResultIdx][0].transcript;
-      console.log(e);
       if(e.results[lastResultIdx].isFinal) {
         hidePrompt(); //will only be effectual first time round
         $('#results').append(message);
@@ -52,8 +52,7 @@ function setupDictation() {
     }
   };
   ws.recognizer.onend = function(e) {
-    console.log('ended');
-    updateDictIndicator(false);
+    console.log('dictation ended');
   };
 }
 
@@ -75,11 +74,80 @@ function stopDictation() {
 * INTERPRETTER FUNCTIONS
 ***************************/
 
-/* All purpose functions */
+
+function setupCmdListener() {
+  ws.interpreter = new webkitSpeechRecognition();
+  ws.interpreter.continuous = true;
+  ws.interpreter.interimResults = false;
+  ws.interpreter.onresult = function(e) {
+    if (e.results.length) {
+      var lastResultIdx = e.resultIndex;
+      var command = e.results[lastResultIdx][0].transcript;
+      if(e.results[lastResultIdx].isFinal) {
+        hidePrompt(); //will only be effectual first time round
+        l(command);
+        interpret(command);
+      }
+    }
+  };
+  ws.interpreter.onend = function(e) {
+    console.log('cmd listener ended');
+  };
+}
+
+function startCmdListener() {
+  ws.interpreter.start();
+  ws.dictRunning = true;
+  showPrompt();
+  updateInterpretIndicator(ws.dictRunning);
+  console.log('interpreter started');
+}
+
+function stopCmdListener() {
+  ws.interpreter.stop();
+  ws.interpreterRunning = false;
+  updateInterpretIndicator(ws.interpreterRunning);
+}
+
+function interpret(command) {
+  if(command[0] == ' ') {
+    command = command.substr(1,command.length);
+  }
+  switch(command.toLowerCase()) {
+    case 'red':
+    case 'green':
+    case 'blue':
+    case 'yellow':
+    case 'white':
+    case 'black':
+      $('body').css('background-color', command);
+      break;
+    default:
+      alert('I\'m sorry I didn\'t understand that command');
+  }
+}
+
+/*
+* All purpose functions
+***************************/
 
 function updateDictIndicator(running) {
   //make this general!
   var i = $('#dict-indicator');
+  if(running) {
+    i.addClass('listening');
+    i.removeClass('not-listening');
+    i.html('Listening');
+  } else {
+    i.addClass('not-listening');
+    i.removeClass('listening');
+    i.html('Not Listening');
+  }
+}
+
+function updateInterpretIndicator(running) {
+  //make this general!
+  var i = $('#commands-indicator');
   if(running) {
     i.addClass('listening');
     i.removeClass('not-listening');
