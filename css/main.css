@@ -6319,9 +6319,11 @@ body {
   -webkit-animation-direction: alternate; }
 
 #results {
-  min-height: 200px;
+  display: block;
+  min-height: 100px;
   min-width: 200px;
-  margin-top: 10px;
+  margin: 10px 0px;
+  padding: 5px;
   border: solid 1px black; }
 
 .coming-soon {
