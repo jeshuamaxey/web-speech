@@ -1,0 +1,95 @@
+/*
+*
+Resetting and rebuilding styles have been helped along thanks to the fine work of
+Eric Meyer http://meyerweb.com/eric/tools/css/reset/index.html
+along with Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
+and Blueprint http://www.blueprintcss.org/
+*
+*/
+
+/* =Reset
+----------------------------------------------- */
+//@import "reset";
+
+/* =Twitter Bootstrap
+----------------------------------------------- */
+@import "bootstrap";
+@import "bootstrap-responsive";
+
+/* =Global
+----------------------------------------------- */
+
+//SASS variables
+
+//Styles
+
+body {
+	background-image: url('img/bg.png');
+	font-family: "Courier New", Courier, monospace;
+	padding: 0 20px;
+}
+.wrapper {
+	width: 80%;
+	padding:20px;
+	background-color: rgba(255, 255, 255, 1);
+}
+.prompt {
+	display: none;
+	float: right;
+	text-align: right;
+	color: red;
+	font-size: 150%;
+	.prompt-arrow {
+		position: relative;
+		right: 15px;
+		height: 70px;
+	}
+	p {
+		width: 160px;
+		margin-top: 10px;
+	}
+}
+.indicator {
+	background-color: black;
+	border-radius: 3px;
+	padding: 5px;
+}
+.not-listening {
+	color: gray;
+}
+.listening {
+	color: red;
+	-webkit-animation-duration: 1s;
+	-webkit-animation-name: pulse;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-direction: alternate;
+}
+#results {
+	min-height: 200px;
+	min-width: 200px;
+	margin-top: 10px;
+	border: solid 1px black;
+}
+
+.coming-soon {
+	color: gray;
+	text-decoration: line-through;
+}
+
+@-webkit-keyframes pulse {
+  from {
+    background-color: gray;
+  }
+ 
+  to {
+  	background-color: black;
+  }
+}
+
+
+/* =Media Queries / Responsive Styles Imports
+----------------------------------------------- */
+@import "desktop";
+@import "tablet";
+@import "mobile";
+@import "device-specific";

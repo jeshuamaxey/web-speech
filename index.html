@@ -1,25 +1,24 @@
 <html>
 	<head>
 		<title>Web Speech</title>
-		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/main.css">
 	</head>
 	<body>
-		<div class="wrapper">
+		<div class="wrapper container">
 			<div id="prompt" class="prompt">
-				<img src="img/up-arrow.svg" alt="">
+				<img class="prompet-arrow" src="img/up-arrow.svg" alt="">
 				<p>Click here to enable the app</p>
 			</div>
 			<header>
 				<h1>Web Speech Test</h1>
-				<h2><a href="http://jeshua.co">By Jeshua Maxey</a></h2>
 				<p>This is a very rough and ready experiment with the Chrome web speech API. This will most certainly not work in any browser other than Google Chrome. Download Chrome <a href="https://www.google.com/intl/en/chrome/browser/index.html">here</a>.</p>
 			</header>
 			<hr/>
 			<section class="app dictation">
 				<h3>Dictation</h3>
 				<p>Turn on dictation to speak text directly into the text area below</p>
-				<button id="start-dict" class="start">Start Dictaction</button>
-				<button id="stop-dict" class="stop">Stop Dictaction</button>
+				<button id="start-dict" class="btn btn-success start">Start Dictaction</button>
+				<button id="stop-dict" class="btn btn-danger stop">Stop Dictaction</button>
 				<span id="dict-indicator" class="not-listening indicator">Not Listening</span>
 				<div id="results"></div>
 			</section><!-- .app -->
@@ -27,8 +26,8 @@
 			<section class="app commands">
 				<h3>Commands</h3>
 				<p>Enable commands and then direct the web app to change its appearance with your voice.</p>
-				<button id="start-commands">Enable Commands</button>
-				<button id="stop-commands">Disable Commands</button>
+				<button id="start-commands" class="btn btn-success">Enable Commands</button>
+				<button id="stop-commands" class="btn btn-danger">Disable Commands</button>
 				<span id="commands-indicator" class="indicator not-listening">Commands Disabled</span>
 				<ul class="command-list">
 					<li>Red, Green, Blue, Yellow, White, Black (this will change the background colour accordinly)</li>
@@ -37,6 +36,10 @@
 					<li class="coming-soon">Make text smaller</li>
 					<li class="coming-soon">Take me to somewhere.com</li>
 				</ul>
+			</section>
+			<hr/>
+			<section class="app">
+				<p>By <a href="http://jeshua.co">Jeshua Maxey</a> </p>
 			</section>
 		</div>
 		<script src="js/jquery.js" type="text/javascript"></script>

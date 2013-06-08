@@ -1,0 +1,60 @@
+body {
+	font-family: "Courier New", Courier, monospace;
+}
+.prompt {
+	display: none;
+	float: right;
+	text-align: right;
+	color: red;
+	font-size: 150%;
+}
+.prompt-arrow {
+	position: relative;
+	right: 15px;
+	height: 70px;
+}
+header {
+	max-width: 60%;
+}
+.app {
+	max-width: 60%;
+}
+button {
+	padding: 4px;
+}
+.indicator {
+	background-color: black;
+	border-radius: 3px;
+	padding: 5px;
+}
+.not-listening {
+	color: gray;
+}
+.listening {
+	color: red;
+	-webkit-animation-duration: 1s;
+	-webkit-animation-name: pulse;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-direction: alternate;
+}
+#results {
+	min-height: 200px;
+	min-width: 200px;
+	margin-top: 10px;
+	border: solid 1px black;
+}
+
+.coming-soon {
+	color: gray;
+	text-decoration: line-through;
+}
+
+@-webkit-keyframes pulse {
+  from {
+    background-color: gray;
+  }
+ 
+  to {
+  	background-color: black;
+  }
+}
