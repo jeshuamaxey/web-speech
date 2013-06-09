@@ -14,13 +14,11 @@ function setupCmdListener() {
       if(e.results[lastResultIdx].isFinal) {
         hidePrompt(); //will only be effectual first time round
         l(command);
-        interpret(command);
+        interpret(command.toLowerCase());
       }
     }
   };
-  ws.interpreter.onend = function(e) {
-    console.log('cmd listener ended');
-  };
+  ws.interpreter.onend = stopCmdListener();
 }
 
 function startCmdListener() {
@@ -41,7 +39,7 @@ function interpret(command) {
   if(command[0] == ' ') {
     command = command.substr(1,command.length);
   }
-  switch(command.toLowerCase()) {
+  switch(command) {
     //change bg colour
     case 'red':
     case 'green':
@@ -49,7 +47,12 @@ function interpret(command) {
     case 'yellow':
     case 'white':
     case 'black':
-      $('.wrapper').css('background-color', command);
+      var currentBgClass = $('.wrapper').attr('currentBgClass') || '';
+      var newBgClass = 'bg-' + command;
+      $('.wrapper').removeClass(currentBgClass);
+      $('.wrapper').addClass(newBgClass);
+      var currentBgClass = $('.wrapper').attr('currentBgClass', newBgClass);
+      //$('.wrapper').css('background-color', command);
       break;
     //increase text size
     case 'increase text':

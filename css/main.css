@@ -6288,6 +6288,19 @@ body {
   width: 80%;
   padding: 20px;
   background-color: white; }
+  .wrapper.bg-red {
+    background-color: #ffcccc; }
+  .wrapper.bg-blue {
+    background-color: #c4e9f5; }
+  .wrapper.bg-green {
+    background-color: #c4f5c4; }
+  .wrapper.bg-yellow {
+    background-color: #ffffcc; }
+  .wrapper.bg-white {
+    background-color: white; }
+  .wrapper.bg-black {
+    color: white;
+    background-color: black; }
 
 .prompt {
   display: none;
@@ -6324,7 +6337,8 @@ body {
   min-width: 200px;
   margin: 10px 0px;
   padding: 5px;
-  border: solid 1px black; }
+  border: solid 1px black;
+  background-color: white; }
 
 .coming-soon {
   color: gray;

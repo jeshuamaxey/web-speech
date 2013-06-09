@@ -32,6 +32,25 @@ body {
 	width: 80%;
 	padding:20px;
 	background-color: rgba(255, 255, 255, 1);
+	&.bg-red {
+		background-color: rgba(255,204,204,1);
+	}
+	&.bg-blue {
+		background-color: rgba(196,233,245,1);
+	}
+	&.bg-green {
+		background-color: rgba(196,245,196,1);
+	}
+	&.bg-yellow {
+		background-color: rgba(255,255,204,1);
+	}
+	&.bg-white {
+		background-color: white;
+	}
+	&.bg-black {
+		color: white;
+		background-color: rgba(0, 0, 0, 1);
+	}
 }
 .prompt {
 	display: none;
@@ -71,6 +90,7 @@ body {
 	margin: 10px 0px;
 	padding: 5px;
 	border: solid 1px black;
+	background-color: white;
 }
 
 .coming-soon {
