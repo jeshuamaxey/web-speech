@@ -72,10 +72,20 @@ function interpret(command) {
     case 'make the writing smaller':
       decreaseTextSize();
       break;
+    //do a barrel roll
+    case 'do a barrel roll':
+      doBarrelRoll();
+      break;
     default:
+      warning(command);
       alert('I\'m sorry I didn\'t understand that command');
   }
 }
+
+function warning(command) {
+  console.log(command);
+}
+
 function increaseTextSize() {
   //multiply by 1 to make the value a number, increase this number then append 'px'
   var newTextSize = $('body').css('font-size').substr(0,$('body').css('font-size').length - 2)*1 + 4 + 'px';
@@ -86,4 +96,14 @@ function decreaseTextSize() {
   //multiply by 1 to make the value a number, decrease this number then append 'px'
   var newTextSize = $('body').css('font-size').substr(0,$('body').css('font-size').length - 2)*1 - 4 + 'px';
   $('body').css('font-size', newTextSize);
+}
+
+function doBarrelRoll() {
+  $('body').addClass('barrel-roll');
+  //the CSS animation lasts for 2s so wait until it's
+  //finished then remove class so it can be reapplied
+  window.setTimeout(function() {
+    $('body').removeClass('barrel-roll');
+  }, 2100);
+  console.log('weeeeeeee');
 }

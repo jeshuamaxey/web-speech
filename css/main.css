@@ -6344,12 +6344,25 @@ body {
   color: gray;
   text-decoration: line-through; }
 
+.barrel-roll {
+  -webkit-animation-duration: 2s;
+  -webkit-animation-name: spin;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-direction: alternate; }
+
 @-webkit-keyframes pulse {
   from {
     background-color: gray; }
 
   to {
     background-color: black; } }
+
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg); }
+
+  to {
+    -webkit-transform: rotate(360deg); } }
 
 /* =Media Queries / Responsive Styles Imports
 ----------------------------------------------- */
